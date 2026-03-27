@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENALGO_API_KEY=${OPENALGO_API_KEY:-your_key_here}
+      - OPENALGO_HOST=${OPENALGO_HOST:-http://host.docker.internal:5000}
+      - OPENALGO_WS_URL=${OPENALGO_WS_URL:-ws://host.docker.internal:8765}
+      - TERMINAL_PORT=8000
+      - CORS_ORIGINS=["http://localhost:3000","http://127.0.0.1:3000"]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8000/api/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000
+        NEXT_PUBLIC_WS_URL: ws://localhost:8000/ws/market
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
