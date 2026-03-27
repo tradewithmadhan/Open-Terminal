@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3.5%;
+    --foreground: 240 10% 87%;
+    --card: 240 20% 5%;
+    --card-foreground: 240 10% 87%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 240 15% 10%;
+    --secondary-foreground: 240 10% 87%;
+    --muted: 240 15% 15%;
+    --muted-foreground: 240 10% 50%;
+    --accent: 220 80% 63%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 15% 12%;
+    --input: 240 15% 12%;
+    --ring: 220 80% 63%;
+    --radius: 0.25rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    @apply bg-[#08080d] text-[#d4d4e0] overflow-hidden;
+    font-family: 'JetBrains Mono', var(--font-mono), monospace !important;
+    font-size: 13px;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0e0e16;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a42;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a5a;
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(68, 138, 255, 0.3);
+    color: #f0f0ff;
+  }
+
+  /* Tabular numbers for price displays */
+  .tabular-nums {
+    font-family: var(--font-mono), monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .input-field {
+    @apply bg-[#08080d] border border-[#2a2a42] rounded-sm px-3 py-1.5 text-xs text-zinc-200 outline-none focus:border-[#448aff] transition-colors;
+  }
+}
+
+/* Price flash animations */
+@keyframes flash-green {
+  0% { background-color: rgba(0, 230, 118, 0.15); }
+  100% { background-color: transparent; }
+}
+
+@keyframes flash-red {
+  0% { background-color: rgba(255, 61, 61, 0.15); }
+  100% { background-color: transparent; }
+}
+
+.animate-flash-green {
+  animation: flash-green 300ms ease-out;
+}
+
+.animate-flash-red {
+  animation: flash-red 300ms ease-out;
+}
+
+/* react-grid-layout overrides */
+.react-grid-layout {
+  background: #08080d !important;
+}
+.react-grid-item {
+  transition: all 200ms ease !important;
+}
+.react-grid-item.react-grid-placeholder {
+  background: #448aff22 !important;
+  border: 1px dashed #448aff44 !important;
+  border-radius: 2px;
+  opacity: 1 !important;
+}
+.react-resizable-handle {
+  background: none !important;
+}
+.react-resizable-handle::after {
+  border-color: #2a2a42 !important;
+}
+.react-resizable-handle:hover::after {
+  border-color: #448aff !important;
+}
+
+/* Panel Active Glow */
+.panel-active {
+  border-color: #2a2a4a !important;
+  box-shadow: 0 0 1px rgba(68, 138, 255, 0.1);
+}
+
+/* Loading Skeleton */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #1e1e30 0%, #252540 50%, #1e1e30 100%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 2px;
+}
