@@ -3,6 +3,17 @@
 > A professional, open-source Bloomberg-style trading terminal for Everyone.
 > Compatible with Openalgo API, Make Your Openalgo More Advance.
 
+##  Terminal Interface Screenshots
+
+<img width="1080" height="720" alt="Screenshot 2026-03-27 105252" src="https://github.com/user-attachments/assets/42e378a0-337c-4750-a7f5-b806e30dec0d" />
+&nbsp;&nbsp;
+<img width="1080" height="720" alt="Screenshot (33)" src="https://github.com/user-attachments/assets/45a493ce-9ac3-4b71-8c6a-57ae4e9790f0" />
+&nbsp;&nbsp;
+<img width="1080" height="720" alt="Screenshot (34)" src="https://github.com/user-attachments/assets/e8e437be-aeca-4a6a-805c-bd17046259ff" />
+&nbsp;&nbsp;
+<img width="1080" height="720" alt="Screenshot (35)" src="https://github.com/user-attachments/assets/bce2d1bf-cdd4-4af8-912f-4e4e8cf5ef71" />
+&nbsp;&nbsp;
+
 ## ✨ Features
 
 ### 📊 Market Data
